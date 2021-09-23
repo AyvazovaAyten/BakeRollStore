@@ -1,0 +1,95 @@
+﻿@model Bio
+<!-- Footer Begins -->
+<footer>
+    <div class="footer_callback" id="contacts">
+        <div class="container-lg">
+            <div class="section-title">
+                <p class="title_text">Let us call you</p>
+            </div>
+            <p class="section-text">
+                Now you can use our call-back service! To do so, please fill in the form
+                below by clicking the
+                "Make a Call request" button below. We'll call you at the right time of your choice.
+            </p>
+            <button type="button" class="call-btn call-request">Make a Call Request</button>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal-content">
+            <i class="fas fa-window-close close-btn"></i>
+            <form id="callback-request" class="call-form" asp-controller="Base" asp-action="CallRequest" method="post">
+                <span class="validation-error"></span>
+                <p class="colored-text">Call request</p>
+                <div class="info">
+                    <span>Enter your number and we'll contact you as soon as possible!</span>
+                </div>
+                <div class="input-element">
+                    <i class="fas fa-user"></i>
+                    <input class="input" type="text" name="name" placeholder="Full Name" required>
+                </div>
+                <div class="input-element">
+                    <i class="fas fa-phone"></i>
+                    <input class="input" type="tel" name="phone" placeholder="Phone" required>
+                </div>
+                <div class="input-element">
+                    <i class="fas fa-clock"></i>
+                    <select class="input" name="time" required>
+                        <option value="Now">As soon as possible</option>
+                        <option value="Before Lunch">Until the lunch</option>
+                        <option value="After Lunch">After the lunch</option>
+                    </select>
+                </div>
+                <input class="button" type="submit" value="Send Request" />
+            </form>
+        </div>
+    </div>
+    <div class="footer_main">
+        <div class="container-lg">
+            <i class="fish-icon"></i>
+            <p>
+                Bake&Roll - offers free delivery of 🍣 sushi orders to homes and offices in
+                Baku. Visitors can
+                book online for 7 days a week, ⏰ 24 hours a day, Sushi set, Roll, Hot Rolls, Noodles, Snacks,
+                Soups, Salads, Sauces, Hot dishes online.
+            </p>
+
+            <div class="contacts">
+                <ul class="telephone">
+                    @foreach (PhoneNumber num in Model.PhoneNumbers)
+                    {
+                        <li>
+                            <a href="tel:@num.Number">
+                                @num.Number
+                            </a>
+                        </li>
+                    }
+                </ul>
+
+                <a href="#"
+                   onclick="window.open('https://www.google.com/maps/place/BakenRoll+Sushi+Bar/40.368233,49.8280513,17z/data=!3m1!4b1!4m5!3m4!1s0x40307dc83004c171:0xb41a1a95081be914!8m2!3d40.368233!4d49.83024')"
+                   title="Find us on map">
+                    <i class="fas fa-map-marker-alt"></i>@Model.Adress
+                </a>
+            </div>
+
+            <div class="social-media">
+                <a class="sm-link" href="@Model.FbLink"><i class="fab fa-facebook-square"></i></a>
+                <a class="sm-link" href="@Model.InstagramLink"><i class="fab fa-instagram"></i></a>
+                <a class="sm-link" href="@Model.WhatsappLink"><i class="fab fa-whatsapp"></i></a>
+                <a class="sm-link" href="@Model.YoutubeLink"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container-lg">
+                <div class="row">
+                    <p class="rights">© 2021 Bake&Roll All rights reserved</p>
+                    <div class="siteby">
+                        <span>Site By</span>
+                        <a href="#">SomeOne</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Ends -->

@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model About
+<!-- Page Intro Begins -->
+<section class="page-intro">
+    <div class="container-lg flex-col">
+        <h1 class="page-title about-title">ABOUT OUR RESTAURANT</h1>
+        <div>
+            <a href="https://www.bakenroll.az/en"
+               title="Bake&amp;Roll - Online Sushi Order &amp; Free Sushi Delivery in Baku"><span>Bake&amp;Roll</span></a>
+        </div>
+    </div>
+</section>
+<!-- Page Intro Ends -->
+<!-- About Section Begins -->
+<section class="about_section">
+    <div class="about-container">
+        <h3>About Bakenroll Sushi Restaurant</h3>
+        <div class="about-body">
+            <p>
+                Bake&amp;Roll Sushi Bar is a professional <strong>
+                    <a asp-controller="Home"
+                       asp-action="Index">sushi delivery service in Baku</a>
+                </strong> since 2015.
+            </p>
+            @Html.Raw(Model.AboutBody)
+        </div>
+        @if (Model.VideoLink != null)
+        {
+            <div class="video">
+                <iframe src="@Model.VideoLink"
+                        title="YouTube video player" frameborder="0" allowfullscreen
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            </div>
+        }
+
+    </div>
+</section>
+<!-- About Section Ends -->
+@section Script{
+    <partial name="_Script" />
+}
